@@ -1,5 +1,5 @@
 {
-  "name": "micromark-extension-mdx-mdx",
+  "name": "micromark-extension-mdx-md",
   "version": "0.0.0",
   "description": "micromark extension to turn some markdown features off for MDX",
   "license": "MIT",

@@ -1,6 +1,6 @@
 {
   "name": "micromark-extension-mdx-md",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "micromark extension to turn some markdown features off for MDX",
   "license": "MIT",
   "keywords": [

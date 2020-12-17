@@ -17,7 +17,7 @@ There is no corresponding **[mdast][]** utility.
 But you can use this through either [`micromark-extension-mdx`][mdx] or
 [`micromark-extension-mdxjs`][mdxjs] with [`mdast-util-mdx`][mdast-util-mdx] to
 support all of MDX (or MDX.js).
-Or, use it through `remark-mdx` or `remark-mdxjs` (**[remark][]**).
+Or, use it through [`remark-mdx`][remark-mdx] (**[remark][]**).
 
 ## Install
 
@@ -137,3 +137,5 @@ abide by its terms.
 [mdxjs]: https://github.com/micromark/micromark-extension-mdxjs
 
 [mdast-util-mdx]: https://github.com/syntax-tree/mdast-util-mdx
+
+[remark-mdx]: https://github.com/mdx-js/mdx/tree/next/packages/remark-mdx

@@ -15,9 +15,14 @@ tokenizer but has no handling of compiling to HTML.
 
 ## When to use this
 
-If you’re using [`micromark`][micromark] or
-[`mdast-util-from-markdown`][from-markdown], use this package.
-This is already used in [xdm][] and [`mdx-js/mdx` (next)][mdx-js].
+This package is already included in [xdm][] and [`mdx-js/mdx` (next)][mdx-js].
+
+You should probably use [`micromark-extension-mdx`][mdx] or
+[`micromark-extension-mdxjs`][mdxjs] instead, which combine this package with
+other MDX features.
+Alternatively, if you’re using [`micromark`][micromark] or
+[`mdast-util-from-markdown`][from-markdown] and you don’t want all of MDX, use
+this package.
 
 ## Install
 

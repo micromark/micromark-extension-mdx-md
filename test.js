@@ -2,7 +2,7 @@ import test from 'tape'
 import {micromark} from 'micromark'
 import {mdxMd as syntax} from './index.js'
 
-test('micromark-extension-mdx-md', function (t) {
+test('micromark-extension-mdx-md', (t) => {
   t.equal(
     micromark('<a>', {extensions: [syntax], allowDangerousHtml: true}),
     '<p>&lt;a&gt;</p>',

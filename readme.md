@@ -13,11 +13,11 @@
 This package provides the low-level modules for integrating with the micromark
 tokenizer but has no handling of compiling to HTML.
 
-There is no corresponding **[mdast][]** utility.
-But you can use this through either [`micromark-extension-mdx`][mdx] or
-[`micromark-extension-mdxjs`][mdxjs] with [`mdast-util-mdx`][mdast-util-mdx] to
-support all of MDX (or MDX.js).
-Or, use it through [`remark-mdx`][remark-mdx] (**[remark][]**).
+## When to use this
+
+If you’re using [`micromark`][micromark] or
+[`mdast-util-from-markdown`][from-markdown], use this package.
+This is already used in [xdm][] and [`mdx-js/mdx` (next)][mdx-js].
 
 ## Install
 
@@ -33,25 +33,29 @@ npm install micromark-extension-mdx-md
 ## Use
 
 ```js
-var mdxMd = require('micromark-extension-mdx-md')
+import {micromark} from 'micromark'
+import {mdxMd} from 'micromark-extension-mdx-md'
 
-micromark('...', {extensions: [mdxMd]})
+const output = micromark('\ta', {extensions: [mdxMd]})
+
+console.log(output)
+```
+
+Yields:
+
+```html
+<p>a</p>
 ```
 
 ## API
 
-This package exports the following identifiers: `mdxMd`
+This package exports the following identifiers: `mdxMd`.
 There is no default export.
 
 ### `mdxMd`
 
-Turn some markdown features (HTML, autolinks, indented code) off for
-[MDX][mdx-js] (or MDX.js).
-
-The export of `syntax` is an extension for the micromark parser (to not tokenize
-some constructs; can be passed in `extensions`).
-
-There are no options yet.
+An extension for micromark to turn some markdown features (HTML, autolinks,
+indented code) off (can be passed in `extensions`).
 
 ## Related
 
@@ -61,12 +65,6 @@ There are no options yet.
     — micromark extension to support MDX
 *   [`micromark/micromark-extension-mdxjs`][mdxjs]
     — micromark extension to support MDX.js
-*   [`micromark/micromark-extension-mdx-expression`][mdx-expression]
-    — micromark extension to support MDX (or MDX.js) expressions
-*   [`micromark/micromark-extension-mdx-jsx`][mdx-jsx]
-    — micromark extension to support MDX (or MDX.js) JSX
-*   [`micromark/micromark-extension-mdxjs-esm`][mdxjs-esm]
-    — micromark extension to support MDX.js import/exports
 *   [`syntax-tree/mdast-util-mdx`][mdast-util-mdx]
     — mdast utility to support MDX (or MDX.js)
 
@@ -126,17 +124,9 @@ abide by its terms.
 
 [micromark]: https://github.com/micromark/micromark
 
-[remark]: https://github.com/remarkjs/remark
-
-[mdast]: https://github.com/syntax-tree/mdast
+[xdm]: https://github.com/wooorm/xdm
 
 [mdx-js]: https://github.com/mdx-js/mdx
-
-[mdx-expression]: https://github.com/micromark/micromark-extension-mdx-expression
-
-[mdx-jsx]: https://github.com/micromark/micromark-extension-mdx-jsx
-
-[mdxjs-esm]: https://github.com/micromark/micromark-extension-mdxjs-esm
 
 [mdx]: https://github.com/micromark/micromark-extension-mdx
 
@@ -144,4 +134,4 @@ abide by its terms.
 
 [mdast-util-mdx]: https://github.com/syntax-tree/mdast-util-mdx
 
-[remark-mdx]: https://github.com/mdx-js/mdx/tree/next/packages/remark-mdx
+[from-markdown]: https://github.com/syntax-tree/mdast-util-from-markdown

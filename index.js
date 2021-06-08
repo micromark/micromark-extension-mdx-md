@@ -1,5 +1,3 @@
-'use strict'
-
-module.exports = {
+export const mdxMd = {
   disable: {null: ['autolink', 'codeIndented', 'htmlFlow', 'htmlText']}
 }

@@ -1,8 +1,6 @@
-'use strict'
-
-var test = require('tape')
-var micromark = require('micromark')
-var syntax = require('.')
+import test from 'tape'
+import {micromark} from 'micromark'
+import {mdxMd as syntax} from './index.js'
 
 test('micromark-extension-mdx-md', function (t) {
   t.equal(

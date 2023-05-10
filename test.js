@@ -3,7 +3,14 @@ import test from 'node:test'
 import {micromark} from 'micromark'
 import {mdxMd} from './index.js'
 
-test('micromark-extension-mdx-md', function () {
+test('mdxMd', async function () {
+  // To do: next major: use export map.
+  assert.deepEqual(
+    Object.keys(await import('./index.js')).sort(),
+    ['mdxMd'],
+    'should expose the public api'
+  )
+
   assert.equal(
     micromark('<a>', {extensions: [mdxMd], allowDangerousHtml: true}),
     '<p>&lt;a&gt;</p>',

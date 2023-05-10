@@ -8,7 +8,7 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-[micromark][] extension to turn some markdown features off for MDX.
+[micromark][] extension to turn some markdown features off for [MDX][mdxjs].
 
 ## Contents
 
@@ -33,19 +33,20 @@ parsing.
 
 ## When to use this
 
-These tools are all low-level.
-In many cases, you want to use [`remark-mdx`][remark-mdx] with remark instead.
-When you are using [`mdx-js/mdx`][mdxjs], that is already included.
+This project is useful when you want to disable support for code (indented),
+autolinks, and HTML (flow and text) in markdown.
 
-Even when you want to use `micromark`, you likely want to use
-[`micromark-extension-mdxjs`][micromark-extension-mdxjs] to support all MDX
-features.
-That extension includes this extension.
+You can use this extension when you are working with [`micromark`][micromark].
+To support all MDX features, use
+[`micromark-extension-mdxjs`][micromark-extension-mdxjs] instead.
+
+All these packages are used in [`remark-mdx`][remark-mdx], which focusses on
+making it easier to transform content by abstracting these internals away.
 
 ## Install
 
 This package is [ESM only][esm].
-In Node.js (version 12.20+, 14.14+, 16.0+, or 18.0+), install with [npm][]:
+In Node.js (version 16+), install with [npm][]:
 
 ```sh
 npm install micromark-extension-mdx-md
@@ -84,20 +85,20 @@ Yields:
 
 ## API
 
-This package exports the identifier `mdxMd`.
+This package exports the identifier [`mdxMd`][api-mdx-md].
 There is no default export.
 
 ### `mdxMd`
 
-Syntax extension for micromark (passed in `extensions`).
+Extension for `micromark` that can be passed in `extensions` to disable some
+CommonMark syntax (code (indented), autolinks, and HTML (flow and text)) for
+MDX ([`Extension`][micromark-extension]).
 
 ## Authoring
 
-To improve authoring MDX, and the new constructs it adds (JSX, expressions, and
-ESM), some markdown features are turned off.
-This extension does that.
-
-It turns off:
+To improve authoring the new constructs MDX adds (JSX, expressions, and
+ESM), some markdown features are turned off by this extension.
+There are good alternatives.
 
 ###### Code (indented)
 
@@ -145,9 +146,12 @@ It exports no additional types.
 
 ## Compatibility
 
-This package is at least compatible with all maintained versions of Node.js.
-As of now, that is Node.js 12.20+, 14.14+, 16.0+, and 18.0+.
-It also works in Deno and modern browsers.
+Projects maintained by the unified collective are compatible with all maintained
+versions of Node.js.
+As of now, that is Node.js 16+.
+Our projects sometimes work with older versions, but this is not guaranteed.
+
+These extensions work with `micromark` version 3+.
 
 ## Security
 
@@ -155,10 +159,10 @@ This package is safe.
 
 ## Related
 
-*   [`micromark/micromark-extension-mdxjs`][micromark-extension-mdxjs]
-    — micromark extension to support MDX
+*   [`micromark-extension-mdxjs`][micromark-extension-mdxjs]
+    — support all of MDX
 *   [`remark-mdx`][remark-mdx]
-    — remark plugin to support MDX syntax
+    — support all of MDX in remark
 
 ## Contribute
 
@@ -210,20 +214,24 @@ abide by its terms.
 
 [author]: https://wooorm.com
 
-[contributing]: https://github.com/micromark/.github/blob/HEAD/contributing.md
+[contributing]: https://github.com/micromark/.github/blob/main/contributing.md
 
-[support]: https://github.com/micromark/.github/blob/HEAD/support.md
+[support]: https://github.com/micromark/.github/blob/main/support.md
 
-[coc]: https://github.com/micromark/.github/blob/HEAD/code-of-conduct.md
+[coc]: https://github.com/micromark/.github/blob/main/code-of-conduct.md
 
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 
 [typescript]: https://www.typescriptlang.org
 
+[mdxjs]: https://mdxjs.com
+
 [micromark]: https://github.com/micromark/micromark
 
-[mdxjs]: https://mdxjs.com
+[micromark-extension]: https://github.com/micromark/micromark#syntaxextension
 
 [micromark-extension-mdxjs]: https://github.com/micromark/micromark-extension-mdxjs
 
 [remark-mdx]: https://mdxjs.com/packages/remark-mdx/
+
+[api-mdx-md]: #mdxmd

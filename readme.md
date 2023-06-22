@@ -96,8 +96,8 @@ MDX ([`Extension`][micromark-extension]).
 
 ## Authoring
 
-To improve authoring the new constructs MDX adds (JSX, expressions, and
-ESM), some markdown features are turned off by this extension.
+To improve authoring the new constructs MDX adds (ESM, expressions, and
+JSX), some markdown features are turned off by this extension.
 There are good alternatives.
 
 ###### Code (indented)
@@ -146,12 +146,14 @@ It exports no additional types.
 
 ## Compatibility
 
-Projects maintained by the unified collective are compatible with all maintained
+Projects maintained by the unified collective are compatible with maintained
 versions of Node.js.
-As of now, that is Node.js 16+.
-Our projects sometimes work with older versions, but this is not guaranteed.
 
-These extensions work with `micromark` version 3+.
+When we cut a new major release, we drop support for unmaintained versions of
+Node.
+This means we try to keep the current release line, `micromark-extension-mdx-md@^1`,
+compatible with Node.js 12.
+This package works with `micromark@^3`.
 
 ## Security
 
@@ -192,9 +194,9 @@ abide by its terms.
 
 [downloads]: https://www.npmjs.com/package/micromark-extension-mdx-md
 
-[size-badge]: https://img.shields.io/bundlephobia/minzip/micromark-extension-mdx-md.svg
+[size-badge]: https://img.shields.io/badge/dynamic/json?label=minzipped%20size&query=$.size.compressedSize&url=https://deno.bundlejs.com/?q=micromark-extension-mdx-md
 
-[size]: https://bundlephobia.com/result?p=micromark-extension-mdx-md
+[size]: https://bundlejs.com/?q=micromark-extension-mdx-md
 
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 

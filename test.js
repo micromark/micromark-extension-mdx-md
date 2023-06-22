@@ -3,65 +3,63 @@ import test from 'node:test'
 import {micromark} from 'micromark'
 import {mdxMd} from './index.js'
 
-test('mdxMd', async function () {
-  // To do: next major: use export map.
-  assert.deepEqual(
-    Object.keys(await import('./index.js')).sort(),
-    ['mdxMd'],
-    'should expose the public api'
-  )
+test('mdxMd', async function (t) {
+  await t.test('should expose the public api', async function () {
+    // To do: next major: use export map.
+    assert.deepEqual(Object.keys(await import('./index.js')).sort(), ['mdxMd'])
+  })
 
-  assert.equal(
-    micromark('<a>', {extensions: [mdxMd], allowDangerousHtml: true}),
-    '<p>&lt;a&gt;</p>',
-    'should turn off html (flow)'
-  )
+  await t.test('should turn off html (flow)', function () {
+    assert.equal(
+      micromark('<a>', {extensions: [mdxMd], allowDangerousHtml: true}),
+      '<p>&lt;a&gt;</p>'
+    )
+  })
 
-  assert.equal(
-    micromark('a<b>', {extensions: [mdxMd], allowDangerousHtml: true}),
-    '<p>a&lt;b&gt;</p>',
-    'should turn off html (text)'
-  )
+  await t.test('should turn off html (text)', function () {
+    assert.equal(
+      micromark('a<b>', {extensions: [mdxMd], allowDangerousHtml: true}),
+      '<p>a&lt;b&gt;</p>'
+    )
+  })
 
-  assert.equal(
-    micromark('a <https://example.com>', {extensions: [mdxMd]}),
-    '<p>a &lt;https://example.com&gt;</p>',
-    'should turn off autolinks'
-  )
+  await t.test('should turn off autolinks', function () {
+    assert.equal(
+      micromark('a <https://example.com>', {extensions: [mdxMd]}),
+      '<p>a &lt;https://example.com&gt;</p>'
+    )
+  })
 
-  assert.equal(
-    micromark('    a', {extensions: [mdxMd]}),
-    '<p>a</p>',
-    'should turn off indented code (1, basic)'
-  )
+  await t.test('should turn off indented code (1, basic)', function () {
+    assert.equal(micromark('    a', {extensions: [mdxMd]}), '<p>a</p>')
+  })
 
-  assert.equal(
-    micromark('    - a\n    - b', {extensions: [mdxMd]}),
-    '<ul>\n<li>a</li>\n<li>b</li>\n</ul>',
-    'should turn off indented code (2, containers)'
-  )
+  await t.test('should turn off indented code (2, containers)', function () {
+    assert.equal(
+      micromark('    - a\n    - b', {extensions: [mdxMd]}),
+      '<ul>\n<li>a</li>\n<li>b</li>\n</ul>'
+    )
+  })
 
-  assert.equal(
-    micromark('    - a\n\n    - b', {extensions: [mdxMd]}),
-    '<ul>\n<li>\n<p>a</p>\n</li>\n<li>\n<p>b</p>\n</li>\n</ul>',
-    'should turn off indented code (3, containers)'
-  )
+  await t.test('should turn off indented code (3, containers)', function () {
+    assert.equal(
+      micromark('    - a\n\n    - b', {extensions: [mdxMd]}),
+      '<ul>\n<li>\n<p>a</p>\n</li>\n<li>\n<p>b</p>\n</li>\n</ul>'
+    )
+  })
 
-  assert.equal(
-    micromark('    > a\n    > b', {extensions: [mdxMd]}),
-    '<blockquote>\n<p>a\nb</p>\n</blockquote>',
-    'should turn off indented code (4, containers)'
-  )
+  await t.test('should turn off indented code (4, containers)', function () {
+    assert.equal(
+      micromark('    > a\n    > b', {extensions: [mdxMd]}),
+      '<blockquote>\n<p>a\nb</p>\n</blockquote>'
+    )
+  })
 
-  assert.equal(
-    micromark('a\n   ---', {extensions: [mdxMd]}),
-    '<h2>a</h2>',
-    'should turn off indented code (5, interrupt)'
-  )
+  await t.test('should turn off indented code (5, interrupt)', function () {
+    assert.equal(micromark('a\n   ---', {extensions: [mdxMd]}), '<h2>a</h2>')
+  })
 
-  assert.equal(
-    micromark('a\n    ---', {extensions: [mdxMd]}),
-    '<h2>a</h2>',
-    'should turn off indented code (6, interrupt)'
-  )
+  await t.test('should turn off indented code (6, interrupt)', function () {
+    assert.equal(micromark('a\n    ---', {extensions: [mdxMd]}), '<h2>a</h2>')
+  })
 })

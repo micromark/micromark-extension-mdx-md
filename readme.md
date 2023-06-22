@@ -17,7 +17,7 @@
 *   [Install](#install)
 *   [Use](#use)
 *   [API](#api)
-    *   [`mdxMd`](#mdxmd)
+    *   [`mdxMd()`](#mdxmd)
 *   [Authoring](#authoring)
 *   [Types](#types)
 *   [Compatibility](#compatibility)
@@ -88,11 +88,15 @@ Yields:
 This package exports the identifier [`mdxMd`][api-mdx-md].
 There is no default export.
 
-### `mdxMd`
+### `mdxMd()`
+
+Create an extension for `micromark` to disable some CommonMark syntax (code
+(indented), autolinks, and HTML (flow and text)) for MDX.
+
+###### Returns
 
 Extension for `micromark` that can be passed in `extensions` to disable some
-CommonMark syntax (code (indented), autolinks, and HTML (flow and text)) for
-MDX ([`Extension`][micromark-extension]).
+CommonMark syntax for MDX ([`Extension`][micromark-extension]).
 
 ## Authoring
 
